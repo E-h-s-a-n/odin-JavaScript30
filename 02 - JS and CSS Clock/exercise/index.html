@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS and CSS Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="clock">
+        <div class="clock-face">
+            <div class="hand hour-hand"></div>
+            <div class="hand minute-hand"></div>
+            <div class="hand second-hand"></div>
+            <div class="pin"></div>
+        </div>
+        <div class="day">Sun</div>
+    </div>
+    <div>
+    </div>
+
+    <script>
+        const secondHand = document.querySelector('.second-hand');
+        const minuteHand = document.querySelector('.minute-hand');
+        const hourHand = document.querySelector('.hour-hand');
+        const dayHand = document.querySelector('.day')
+
+        function setTime(){
+            days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            const now = new Date();
+            const second = now.getSeconds();
+            const minute = now.getMinutes();
+            const hour = now.getHours();
+            const weekDay = now.getDay();
+
+            const secondDegree = (second / 60) * 360 + 0;
+            const minuteDegree = (minute / 60) * 360 + 0;
+            const hourDegree = (hour / 12) * 360 + 0;
+            
+            secondHand.style.transform = `rotate(${secondDegree}deg)`;
+            minuteHand.style.transform = `rotate(${minuteDegree}deg)`;
+            hourHand.style.transform = `rotate(${hourDegree}deg)`;
+            dayHand.textContent = days[weekDay-1]
+        }
+        setInterval(setTime, 500);
+
+    </script>
+</body>
+</html>
