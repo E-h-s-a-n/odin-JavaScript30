@@ -28,7 +28,7 @@
         const dayHand = document.querySelector('.day')
 
         function setTime(){
-            days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            days = ['Sun' ,'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
             const now = new Date();
             const second = now.getSeconds();
             const minute = now.getMinutes();
@@ -42,7 +42,8 @@
             secondHand.style.transform = `rotate(${secondDegree}deg)`;
             minuteHand.style.transform = `rotate(${minuteDegree}deg)`;
             hourHand.style.transform = `rotate(${hourDegree}deg)`;
-            dayHand.textContent = days[weekDay-1]
+            dayHand.textContent = days[weekDay]
+            
         }
         setInterval(setTime, 500);
 
